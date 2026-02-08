@@ -1,0 +1,39 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Remove “Start Gamepad Testing” CTA from Tester SEO content block",
+  "requirements": [
+    {
+      "id": "REQ-19",
+      "summary": "Remove the “Start Gamepad Testing” CTA button from TesterSeoContentBlock and delete any button-only supporting code (e.g., scroll handler) plus unused imports.",
+      "acceptanceCriteria": [
+        "The “Start Gamepad Testing” button is no longer rendered anywhere in the marketing/SEO content block.",
+        "frontend/src/components/gamepad/TesterSeoContentBlock.tsx no longer imports the shadcn Button component if it is not used after removal.",
+        "Any scroll-to-tester handler/function that is only used by the removed button is deleted and the file compiles without unused-variable/import warnings."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/gamepad/TesterSeoContentBlock.tsx",
+          "operation": "modify",
+          "description": "Remove the CTA <Button> labeled exactly “Start Gamepad Testing” from the SEO block markup; remove the related scrollToTester function and any other helpers that become unused; remove the shadcn-ui Button import from '@/components/ui/button' if no longer needed. Do not edit any files under frontend/src/components/ui. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Update the “How to Use the Online Gamepad Tester” copy in TesterSeoContentBlock so it no longer references clicking the removed CTA button, keeping the remaining SEO text intact and in English.",
+      "acceptanceCriteria": [
+        "The ordered list item that says “Click the Start Gamepad Testing button on this page.” is removed or rewritten so it no longer references a non-existent button.",
+        "All other headings/paragraphs/lists in the SEO block remain present and readable in English.",
+        "There are no remaining user-facing references to “Start Gamepad Testing” in the SEO block after this change."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/gamepad/TesterSeoContentBlock.tsx",
+          "operation": "modify",
+          "description": "Edit the ordered list under “How to Use the Online Gamepad Tester” to remove or rewrite the step that instructs users to click the “Start Gamepad Testing” button, ensuring no remaining user-facing references to that phrase within this SEO block, while keeping all other marketing/SEO copy unchanged and in English."
+        }
+      ]
+    }
+  ]
+}

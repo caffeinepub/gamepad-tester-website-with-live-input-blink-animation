@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 11,
+  "summary": "Expand the gamepad tester website with advanced diagnostics plus improved controller compatibility UX, and add richer on-page marketing/SEO content describing features, how-to steps, supported controllers, and tool benefits.",
+  "architectural_notes": [
+    "Use the browser Gamepad API for polling controller state and updating the UI in real time.",
+    "Controller-specific features (e.g., calibration) may require per-controller detection/heuristics and fallback UI when the browser Gamepad API does not expose needed capabilities."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-responsive-site-layout-that-includes-1-a-header-displaying-the-website-name-2-a-navbar-with-at-least-tester-and-about-links-sections-and-3-a-footer-that-displays-an-english-copyright-notice-e-g-currentyear-sitename-all-rights-reserved",
+      "title": "Create a responsive site layout that includes: (1) a header displaying the website name, (2) a navbar with at least “Tester” and “About” links/sections, and (3) a footer that displays an English copyright notice (e.g., “© {currentYear} {SiteName}. All rights reserved.”).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-gamepad-api-integration-in-the-frontend-to-detect-connected-gamepads-show-connection-status-connected-disconnected-and-allow-selecting-among-multiple-connected-controllers",
+      "title": "Implement Gamepad API integration in the frontend to detect connected gamepads, show connection status (connected/disconnected), and allow selecting among multiple connected controllers.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-live-input-visualization-that-updates-continuously-and-reflects-current-controller-state-a-buttons-pressed-touched-value-and-b-axes-values-the-visualization-must-include-a-blink-animated-indicator-that-clearly-changes-state-when-an-input-is-active-e-g-button-press-causes-a-momentary-glow-pulse",
+      "title": "Build a live input visualization that updates continuously and reflects current controller state: (a) buttons (pressed/touched/value) and (b) axes values. The visualization must include a blink/animated indicator that clearly changes state when an input is active (e.g., button press causes a momentary glow/pulse).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-use-an-efficient-update-loop-for-live-input-reads-e-g-requestanimationframe-and-ensure-the-ui-remains-smooth-without-memory-leaks-by-properly-adding-removing-gamepad-api-event-listeners-and-stopping-updates-when-the-page-component-unmounts",
+      "title": "Use an efficient update loop for live input reads (e.g., requestAnimationFrame) and ensure the UI remains smooth without memory leaks by properly adding/removing Gamepad API event listeners and stopping updates when the page/component unmounts.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-visual-theme-across-the-app-colors-typography-spacing-and-component-styling-suitable-for-a-hardware-tester-tool-avoiding-a-blue-purple-dominant-palette-keep-the-style-consistent-across-header-navbar-tester-ui-and-footer",
+      "title": "Apply a coherent visual theme across the app (colors, typography, spacing, and component styling) suitable for a “hardware tester” tool, avoiding a blue/purple-dominant palette. Keep the style consistent across header, navbar, tester UI, and footer.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-multi-controller-selector-ui-on-the-tester-page-with-a-tab-style-controller-switcher-that-shows-all-connected-controllers-at-the-top-switching-tabs-must-change-the-active-controller-for-all-visualizations-and-tests-on-the-page-buttons-axes-vibration-gyro-imu-drift-graphs-button-heatmap-latency-test-and-the-selected-tab-must-remain-valid-when-controllers-connect-disconnect-auto-fallback-to-the-first-available-controller-if-the-selected-one-disconnects",
+      "title": "Replace the current multi-controller selector UI on the Tester page with a tab-style controller switcher that shows all connected controllers at the top. Switching tabs must change the active controller for all visualizations and tests on the page (buttons, axes, vibration, gyro/IMU, drift graphs, button heatmap, latency test), and the selected tab must remain valid when controllers connect/disconnect (auto-fallback to the first available controller if the selected one disconnects).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-vibration-rumble-test-panel-for-the-selected-controller-if-the-browser-controller-exposes-vibration-support-e-g-vibrationactuator-or-haptic-actuators-provide-controls-to-trigger-vibration-patterns-at-minimum-short-pulse-long-pulse-and-a-repeating-pattern-with-configurable-intensity-strength-when-supported-if-vibration-is-not-supported-show-an-english-not-supported-on-this-controller-browser-message-and-disable-controls",
+      "title": "Add a vibration (rumble) test panel for the selected controller. If the browser/controller exposes vibration support (e.g., vibrationActuator or haptic actuators), provide controls to trigger vibration patterns (at minimum: short pulse, long pulse, and a repeating pattern) with configurable intensity/strength when supported. If vibration is not supported, show an English “Not supported on this controller/browser” message and disable controls.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-gyroscope-imu-visualization-panel-for-the-selected-controller-that-renders-a-3d-cube-which-rotates-based-on-available-orientation-data-from-the-controller-when-provided-by-the-browser-gamepad-object-also-display-the-underlying-motion-orientation-numeric-values-e-g-orientation-angles-and-or-angular-velocity-acceleration-where-available-if-the-selected-controller-does-not-provide-motion-orientation-data-show-an-english-no-motion-imu-data-available-message",
+      "title": "Add a gyroscope/IMU visualization panel for the selected controller that renders a 3D cube which rotates based on available orientation data from the controller (when provided by the browser Gamepad object). Also display the underlying motion/orientation numeric values (e.g., orientation/angles and/or angular velocity/acceleration where available). If the selected controller does not provide motion/orientation data, show an English “No motion/IMU data available” message.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-axis-visualization-to-include-animated-axis-value-bars-in-addition-to-or-replacing-the-current-single-position-indicator-so-users-can-more-clearly-see-magnitude-and-direction-bars-must-animate-smoothly-with-live-updates-and-retain-the-existing-active-state-highlighting-behavior",
+      "title": "Enhance axis visualization to include animated axis value bars in addition to (or replacing) the current single position indicator, so users can more clearly see magnitude and direction. Bars must animate smoothly with live updates and retain the existing active-state highlighting behavior.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-drift-testing-tools-for-the-selected-controller-that-graph-analog-axis-values-over-time-to-help-detect-stick-drift-the-drift-panel-must-keep-a-rolling-time-window-e-g-last-n-seconds-and-provide-controls-to-start-stop-capture-and-clear-reset-the-captured-data-drift-capture-must-be-scoped-per-controller-tab-switching-tabs-shows-that-controller-s-own-drift-history",
+      "title": "Add drift testing tools for the selected controller that graph analog axis values over time to help detect stick drift. The drift panel must keep a rolling time window (e.g., last N seconds) and provide controls to start/stop capture and clear/reset the captured data. Drift capture must be scoped per controller tab (switching tabs shows that controller’s own drift history).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-button-heatmap-panel-for-the-selected-controller-that-accumulates-button-usage-over-time-at-minimum-press-count-per-button-optionally-incorporate-analog-value-intensity-where-available-the-heatmap-must-be-visual-and-easy-to-compare-across-buttons-e-g-color-intensity-scaling-and-include-a-reset-button-heatmap-accumulation-must-be-scoped-per-controller-tab",
+      "title": "Add a button heatmap panel for the selected controller that accumulates button usage over time (at minimum: press count per button; optionally incorporate analog value intensity where available). The heatmap must be visual and easy to compare across buttons (e.g., color intensity scaling), and include a reset button. Heatmap accumulation must be scoped per controller tab.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-controller-latency-test-panel-for-the-selected-controller-provide-an-interactive-test-that-measures-user-perceived-input-latency-by-prompting-the-user-with-a-clear-on-screen-cue-change-and-timing-the-delay-until-a-target-button-press-is-detected-show-results-in-milliseconds-and-keep-a-short-history-of-recent-trials-with-summary-stats-e-g-average-min-max-if-no-controller-is-selected-the-panel-must-show-an-english-message-indicating-a-controller-is-required",
+      "title": "Add a controller latency test panel for the selected controller. Provide an interactive test that measures user-perceived input latency by prompting the user with a clear on-screen cue change and timing the delay until a target button press is detected. Show results in milliseconds and keep a short history of recent trials with summary stats (e.g., average/min/max). If no controller is selected, the panel must show an English message indicating a controller is required.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-explicit-controller-family-detection-and-user-facing-labeling-for-connected-controllers-covering-ps5-dualsense-ps5-dualsense-edge-ps4-dualshock-ps3-controllers-xbox-one-xbox-series-controllers-and-generic-pc-gamepads-show-a-clear-detected-controller-type-name-english-alongside-the-raw-gamepad-id-in-the-tester-page-controller-info-and-use-the-detected-name-in-the-controller-tabs-when-possible",
+      "title": "Add explicit controller-family detection and user-facing labeling for connected controllers, covering: PS5 DualSense, PS5 DualSense Edge, PS4 DualShock, PS3 controllers, Xbox One / Xbox Series controllers, and generic PC gamepads. Show a clear detected controller type name (English) alongside the raw Gamepad.id in the Tester page controller info, and use the detected name in the controller tabs when possible.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-analog-calibration-tool-for-ps4-dualshock-ps5-dualsense-and-ps5-dualsense-edge-controllers-that-allows-users-to-adjust-dead-zones-and-improve-joystick-precision-the-tool-must-provide-per-stick-dead-zone-controls-and-show-live-before-after-values-based-on-the-selected-controller-s-current-axis-readings",
+      "title": "Implement an analog calibration tool for PS4 DualShock, PS5 DualSense, and PS5 DualSense Edge controllers that allows users to adjust dead zones and improve joystick precision. The tool must provide per-stick dead-zone controls and show live before/after values based on the selected controller’s current axis readings.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-empty-static-no-gamepad-experience-on-initial-load-with-a-prominent-waiting-for-controller-connection-animation-that-is-shown-whenever-no-controllers-are-connected-the-animation-must-appear-in-the-existing-waiting-for-controller-no-gamepad-detected-area-on-the-tester-page",
+      "title": "Replace the current empty/static “no gamepad” experience on initial load with a prominent “waiting for controller connection” animation that is shown whenever no controllers are connected. The animation must appear in the existing ‘Waiting for Controller’ / ‘No Gamepad Detected’ area on the Tester page.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-content-section-after-the-main-gamepad-tester-content-on-the-tester-page-that-includes-1-an-faq-with-the-exact-questions-answers-provided-by-the-user-2-a-some-game-pads-list-section-containing-the-exact-list-provided-by-the-user-and-3-a-bottom-row-of-links-labeled-privacy-policy-contact-us-and-t-c-english",
+      "title": "Add a new content section after the main gamepad tester content on the Tester page that includes: (1) an FAQ with the exact questions/answers provided by the user, (2) a ‘Some Game Pads List’ section containing the exact list provided by the user, and (3) a bottom row of links labeled “Privacy policy”, “Contact us”, and “T&C” (English).",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-user-provided-long-form-marketing-seo-content-block-to-the-tester-page-content-and-render-it-as-readable-structured-sections-headline-intro-paragraph-and-the-titled-sections-in-english-preserving-the-text-exactly-as-provided-by-the-user-including-punctuation-casing-and-brand-name-gamepadtester-online-place-this-new-block-in-the-existing-post-tester-content-area-frontend-src-components-gamepad-testerpostcontent-tsx-above-the-existing-faq-card-so-it-appears-before-the-faq-list-links",
+      "title": "Add the user-provided long-form marketing/SEO content block to the Tester page content and render it as readable, structured sections (headline, intro paragraph, and the titled sections) in English, preserving the text exactly as provided by the user (including punctuation, casing, and brand name “GamepadTester.online”). Place this new block in the existing post-tester content area (frontend/src/components/gamepad/TesterPostContent.tsx) above the existing FAQ card so it appears before the FAQ / list / links.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-visible-call-to-action-control-labeled-exactly-start-gamepad-testing-within-the-newly-added-marketing-seo-block-when-clicked-it-must-take-the-user-to-the-interactive-tester-area-on-the-same-page-e-g-scroll-to-the-connection-status-section-at-the-top-of-the-tester-page-without-navigating-away",
+      "title": "Add a visible call-to-action control labeled exactly “Start Gamepad Testing” within the newly added marketing/SEO block. When clicked, it must take the user to the interactive tester area on the same page (e.g., scroll to the connection/status section at the top of the Tester page) without navigating away.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-visible-call-to-action-button-labeled-exactly-start-gamepad-testing-from-the-marketing-seo-content-block-component-frontend-src-components-gamepad-testerseocontentblock-tsx-and-remove-any-now-unused-imports-and-functions-that-only-existed-to-support-this-button-e-g-the-scroll-handler",
+      "title": "Remove the visible call-to-action button labeled exactly “Start Gamepad Testing” from the marketing/SEO content block component (frontend/src/components/gamepad/TesterSeoContentBlock.tsx), and remove any now-unused imports and functions that only existed to support this button (e.g., the scroll handler).",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-how-to-use-the-online-gamepad-tester-section-text-in-frontend-src-components-gamepad-testerseocontentblock-tsx-to-remove-the-instruction-that-references-clicking-the-removed-start-gamepad-testing-button-while-keeping-all-remaining-marketing-seo-text-intact-and-in-english",
+      "title": "Update the “How to Use the Online Gamepad Tester” section text in frontend/src/components/gamepad/TesterSeoContentBlock.tsx to remove the instruction that references clicking the removed “Start Gamepad Testing” button, while keeping all remaining marketing/SEO text intact and in English.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Implement Gamepad API integration to detect connected gamepads and read live input states",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Create live input UI with blinking/animated indicators for buttons/axes based on current gamepad state",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add site layout components: header with website name, navbar, and footer with copyright text",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add vibration test for supported controllers (rumble on/off and patterns)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add gyroscope/IMU test with a rotating 3D cube visualization",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add animated axis value bars for clearer real-time analog stick/trigger visualization",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add drift testing tools including drift graphs over time for analog inputs",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add button heatmap visualization to show usage/frequency/press intensity over time",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Show all connected controllers as tabs; switching tabs shows that controller’s specifications and drives all test visualizations",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Add controller latency test feature",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Add explicit controller support/mapping UX for PS3/PS4/PS5 (DualSense/DualSense Edge), Xbox One/Series, and generic PC gamepads (identification + correct labeling/mapping where possible)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Implement an analog calibration tool (dead zone/joystick precision adjustment) for PS4 DualShock, PS5 DualSense, and PS5 DualSense Edge controllers",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Show a “waiting for gamepad connection” animation/empty-state on page load when no controller is connected",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Add on-page content section after the Gamepad Tester title: FAQ (button malfunctions, wireless support, etc.), supported gamepads list, and links (Privacy policy, Contact us, T&C)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Add the provided long-form marketing/SEO content block (headline, intro, “What is…”, “How to use…”, key features, supported controllers, and “What makes… better?” sections) to the site page content",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Remove the “Start Gamepad Testing” call-to-action button from the marketing/SEO content block (and remove any related scroll-to-tester behavior/text references if needed)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "3d",
+  "projectName": "Gamepad Tester Website with Live Input Blink Animation",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

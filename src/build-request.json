@@ -1,0 +1,55 @@
+{
+  "kind": "build_request",
+  "title": "Remove the “Start Gamepad Testing” CTA button from the SEO content block",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-19",
+      "text": "Remove the visible call-to-action button labeled exactly “Start Gamepad Testing” from the marketing/SEO content block component (frontend/src/components/gamepad/TesterSeoContentBlock.tsx), and remove any now-unused imports and functions that only existed to support this button (e.g., the scroll handler).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-remove-button"
+        ],
+        "quotes": [
+          "Remove this button"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The “Start Gamepad Testing” button is no longer rendered anywhere in the marketing/SEO content block.",
+        "frontend/src/components/gamepad/TesterSeoContentBlock.tsx no longer imports the shadcn Button component if it is not used after removal.",
+        "Any scroll-to-tester handler/function that is only used by the removed button is deleted and the file compiles without unused-variable/import warnings."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Update the “How to Use the Online Gamepad Tester” section text in frontend/src/components/gamepad/TesterSeoContentBlock.tsx to remove the instruction that references clicking the removed “Start Gamepad Testing” button, while keeping all remaining marketing/SEO text intact and in English.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-remove-button"
+        ],
+        "quotes": [
+          "Remove this button"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The ordered list item that says “Click the Start Gamepad Testing button on this page.” is removed or rewritten so it no longer references a non-existent button.",
+        "All other headings/paragraphs/lists in the SEO block remain present and readable in English.",
+        "There are no remaining user-facing references to “Start Gamepad Testing” in the SEO block after this change."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui (shadcn UI components are read-only).",
+    "Keep the backend unchanged (single-actor Motoko canister; no new methods required)."
+  ],
+  "nonGoals": [
+    "Do not remove or change any other buttons or controls in the interactive tester panels (e.g., vibration controls, calibration sliders, latency test controls).",
+    "Do not change the tester page anchor element id=\"tester-interactive-area\" in frontend/src/pages/TesterPage.tsx (it may still be used by other navigation behaviors in the future)."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
