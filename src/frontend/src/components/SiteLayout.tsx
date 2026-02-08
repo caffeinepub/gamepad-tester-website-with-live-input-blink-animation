@@ -46,16 +46,15 @@ export default function SiteLayout({ children, currentView, onNavigate }: SiteLa
 
       <footer className="border-t border-border bg-card py-6">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          © {currentYear}. Built with love using{' '}
+          © {currentYear}.{' '}
           <a
-            href="https://caffeine.ai"
+            href="https://gamepadtester.online"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-foreground underline-offset-4 hover:underline"
           >
-            caffeine.ai
+            GamepadTester.online
           </a>
-          .
         </div>
       </footer>
     </div>

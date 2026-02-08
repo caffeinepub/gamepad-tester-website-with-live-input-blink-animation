@@ -1,37 +1,68 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove “Start Gamepad Testing” CTA from Tester SEO content block",
+  "title": "Replace placeholder AdSense/Clarity IDs and update HTML metadata",
   "requirements": [
     {
-      "id": "REQ-19",
-      "summary": "Remove the “Start Gamepad Testing” CTA button from TesterSeoContentBlock and delete any button-only supporting code (e.g., scroll handler) plus unused imports.",
+      "id": "REQ-30",
+      "summary": "Replace placeholder Google AdSense client in frontend/index.html with the provided production AdSense script URL/client while keeping async + safe-failure behavior.",
       "acceptanceCriteria": [
-        "The “Start Gamepad Testing” button is no longer rendered anywhere in the marketing/SEO content block.",
-        "frontend/src/components/gamepad/TesterSeoContentBlock.tsx no longer imports the shadcn Button component if it is not used after removal.",
-        "Any scroll-to-tester handler/function that is only used by the removed button is deleted and the file compiles without unused-variable/import warnings."
+        "frontend/index.html includes the AdSense script tag with src exactly set to: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6270014025121224",
+        "The placeholder string \"ca-pub-XXXXXXXXXXXXXXXX\" no longer appears anywhere in frontend/index.html",
+        "The script remains async-loaded and does not prevent the SPA from rendering if blocked or failing to load (e.g., onerror handler or equivalent safe failure behavior is present)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/gamepad/TesterSeoContentBlock.tsx",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Remove the CTA <Button> labeled exactly “Start Gamepad Testing” from the SEO block markup; remove the related scrollToTester function and any other helpers that become unused; remove the shadcn-ui Button import from '@/components/ui/button' if no longer needed. Do not edit any files under frontend/src/components/ui. Verify the component's usage instructions before implementing."
+          "description": "Update the Google AdSense script tag to use src exactly https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6270014025121224; remove any remaining placeholder client string; preserve async loading and ensure safe failure behavior remains (e.g., keep/ensure an onerror handler so rendering is not blocked)."
         }
       ]
     },
     {
-      "id": "REQ-20",
-      "summary": "Update the “How to Use the Online Gamepad Tester” copy in TesterSeoContentBlock so it no longer references clicking the removed CTA button, keeping the remaining SEO text intact and in English.",
+      "id": "REQ-31",
+      "summary": "Replace placeholder Microsoft Clarity project ID in frontend/index.html with the provided production project ID while keeping non-blocking load.",
       "acceptanceCriteria": [
-        "The ordered list item that says “Click the Start Gamepad Testing button on this page.” is removed or rewritten so it no longer references a non-existent button.",
-        "All other headings/paragraphs/lists in the SEO block remain present and readable in English.",
-        "There are no remaining user-facing references to “Start Gamepad Testing” in the SEO block after this change."
+        "The Clarity snippet in frontend/index.html uses the project ID exactly: nv7n4ru8tf",
+        "The placeholder string \"CLARITY_PROJECT_ID\" no longer appears anywhere in frontend/index.html",
+        "The Clarity snippet loads asynchronously and does not block initial app render."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/gamepad/TesterSeoContentBlock.tsx",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Edit the ordered list under “How to Use the Online Gamepad Tester” to remove or rewrite the step that instructs users to click the “Start Gamepad Testing” button, ensuring no remaining user-facing references to that phrase within this SEO block, while keeping all other marketing/SEO copy unchanged and in English."
+          "description": "Update the Microsoft Clarity snippet to use the project ID exactly nv7n4ru8tf; remove the placeholder string; keep the snippet’s async script insertion so it does not block initial render."
+        }
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "summary": "Update frontend/index.html title and meta description to the exact required production values.",
+      "acceptanceCriteria": [
+        "The <title> in frontend/index.html is exactly: \"Gamepad Tester Online – Check Controller Buttons, Joysticks & Vibration\"",
+        "frontend/index.html includes a meta name=\"description\" tag with content exactly: \"Free online gamepad tester to check controller buttons, sticks, triggers, vibration and gyroscope. Works with Xbox, PS and USB controllers.\"",
+        "After these changes, no outdated/previous title text remains in frontend/index.html."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Set the document <title> exactly to \"Gamepad Tester Online – Check Controller Buttons, Joysticks & Vibration\" and add/update a meta name=\"description\" with content exactly \"Free online gamepad tester to check controller buttons, sticks, triggers, vibration and gyroscope. Works with Xbox, PS and USB controllers.\"; remove any outdated title/description text remaining in the file."
+        }
+      ]
+    },
+    {
+      "id": "REQ-33",
+      "summary": "Remove or update placeholder replacement comments in frontend/index.html so production IDs are not presented as placeholders.",
+      "acceptanceCriteria": [
+        "frontend/index.html does not contain the placeholder-replacement comments that reference \"Replace ca-pub-XXXXXXXXXXXXXXXX\" and/or \"Replace CLARITY_PROJECT_ID\"",
+        "The production AdSense client and Clarity project ID remain present and correct after comment cleanup."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Delete or rewrite placeholder guidance/comments that instruct replacing IDs (e.g., comments referencing \"Replace ca-pub-XXXXXXXXXXXXXXXX\" and/or \"Replace CLARITY_PROJECT_ID\"), ensuring the finalized production AdSense client and Clarity project ID remain present and correct."
         }
       ]
     }

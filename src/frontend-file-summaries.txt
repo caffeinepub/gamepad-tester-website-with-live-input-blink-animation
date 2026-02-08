@@ -1,6 +1,6 @@
 {
   "frontend/src/App.tsx": "Main application component managing view state (tester/about) and rendering the appropriate page within the site layout.",
-  "frontend/src/components/SiteLayout.tsx": "Persistent layout wrapper with header (site name and gamepad icon), navigation bar (Tester/About), and footer with copyright notice.",
+  "frontend/src/components/SiteLayout.tsx": "Persistent layout wrapper with header (site name and gamepad icon), navigation bar (Tester/About), and footer with copyright notice linking to GamepadTester.online.",
   "frontend/src/pages/TesterPage.tsx": "Main tester page with an id anchor (\"tester-interactive-area\") on the connection status section to enable smooth scrolling from the SEO content block's CTA button.",
   "frontend/src/pages/AboutPage.tsx": "About page explaining the gamepad tester features, usage instructions, and supported controller types.",
   "frontend/src/components/gamepad/ButtonGrid.tsx": "Grid component displaying all gamepad buttons with live state visualization including pressed/touched states, value percentages, and blink animations.",
@@ -19,6 +19,19 @@
   "frontend/src/lib/analogCalibration.ts": "Pure utility module providing dead-zone calibration functions that take raw axis values and per-stick dead-zone settings and return calibrated output without mutating raw Gamepad API readings.",
   "frontend/src/components/gamepad/AnalogCalibrationPanel.tsx": "Calibration panel component with per-stick dead-zone sliders, live before/after axis readouts, and a disabled state with availability message for unsupported controllers (only PS4/PS5 DualSense supported).",
   "frontend/src/components/gamepad/WaitingForControllerAnimation.tsx": "Animated waiting component with pulsing rings, bouncing gamepad icon, and animated dots that displays when no controllers are connected.",
-  "frontend/src/components/gamepad/TesterPostContent.tsx": "Post-tester content section that now includes the new TesterSeoContentBlock above the existing FAQ accordion, supported gamepad models grid, and footer links.",
-  "frontend/src/components/gamepad/TesterSeoContentBlock.tsx": "SEO/marketing content component that renders structured headings, paragraphs, and bullet lists explaining the gamepad tester features, usage instructions, and supported controllers without any interactive CTA buttons."
+  "frontend/src/components/gamepad/TesterPostContent.tsx": "Post-tester content section that now includes the SEO content block, new Features section, new How to Test section, FAQ accordion, supported gamepad models grid, and footer links.",
+  "frontend/src/components/gamepad/TesterSeoContentBlock.tsx": "SEO/marketing content component that renders structured headings, paragraphs, and bullet lists explaining the gamepad tester features, usage instructions, and supported controllers without any interactive CTA buttons.",
+  "frontend/src/components/gamepad/TesterFeaturesSection.tsx": "Features section component displaying six feature cards (universal compatibility, real-time feedback, vibration testing, gyro/motion sensors, drift detection, latency measurement) in a responsive grid with icons, titles, and descriptions.",
+  "frontend/src/components/gamepad/TesterHowToTestSection.tsx": "How-to section component presenting four ordered steps for testing a gamepad (connect, press button, test inputs, use advanced features) with icons and detailed instructions.",
+  "frontend/public/assets/generated/feature-gamepad.dim_96x96.svg": "SVG icon illustrating a gamepad controller with buttons and d-pad for the universal compatibility feature.",
+  "frontend/public/assets/generated/feature-realtime.dim_96x96.svg": "SVG icon showing a waveform with animated pulse for the real-time feedback feature.",
+  "frontend/public/assets/generated/feature-vibration.dim_96x96.svg": "SVG icon depicting a controller with vibration waves for the vibration testing feature.",
+  "frontend/public/assets/generated/feature-gyro.dim_96x96.svg": "SVG icon showing a 3D cube with rotation axes for the gyro/motion sensor feature.",
+  "frontend/public/assets/generated/feature-drift.dim_96x96.svg": "SVG icon displaying a target reticle with crosshairs for the drift detection feature.",
+  "frontend/public/assets/generated/feature-latency.dim_96x96.svg": "SVG icon showing a stopwatch/clock for the latency measurement feature.",
+  "frontend/public/assets/generated/howto-step-connect.dim_96x96.svg": "SVG icon illustrating a USB cable connection for the connect controller step.",
+  "frontend/public/assets/generated/howto-step-press.dim_96x96.svg": "SVG icon showing a button press with arrow for the press any button step.",
+  "frontend/public/assets/generated/howto-step-sticks.dim_96x96.svg": "SVG icon depicting dual analog sticks with directional indicators for the test inputs step.",
+  "frontend/public/assets/generated/howto-step-calibrate.dim_96x96.svg": "SVG icon showing sliders/settings panel for the advanced features step.",
+  "frontend/index.html": "HTML entry point with production Google AdSense (ca-pub-6270014025121224) and Microsoft Clarity (nv7n4ru8tf) tracking scripts integrated asynchronously, updated title and meta description for SEO, with failure-tolerant loading that won't break the React app if blocked."
 }

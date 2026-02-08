@@ -1,35 +1,57 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-08T08:05:29.574Z",
+  "generatedAt": "2026-02-08T08:51:45.539Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 4,
+    "implemented": 4,
     "items": [
       {
-        "id": "REQ-19",
-        "summary": "Remove the visible call-to-action button labeled exactly “Start Gamepad Testing” from the marketing/SEO content block component (frontend/src/components/gamepad/TesterSeoContentBlock.tsx), and remove any now-unused imports and functions that only existed to support this button (e.g., the scroll handler).",
+        "id": "REQ-30",
+        "summary": "Update frontend/index.html to replace the current placeholder Google AdSense publisher client (\"ca-pub-XXXXXXXXXXXXXXXX\") with the exact provided AdSense script URL/client: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6270014025121224.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/gamepad/TesterSeoContentBlock.tsx"
+          "frontend/index.html"
         ],
         "matchedFiles": [
-          "frontend/src/components/gamepad/TesterSeoContentBlock.tsx"
+          "frontend/index.html"
         ]
       },
       {
-        "id": "REQ-20",
-        "summary": "Update the “How to Use the Online Gamepad Tester” section text in frontend/src/components/gamepad/TesterSeoContentBlock.tsx to remove the instruction that references clicking the removed “Start Gamepad Testing” button, while keeping all remaining marketing/SEO text intact and in English.",
+        "id": "REQ-31",
+        "summary": "Update frontend/index.html to replace the current placeholder Microsoft Clarity project ID (\"CLARITY_PROJECT_ID\") with the exact provided Clarity project ID: nv7n4ru8tf.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/gamepad/TesterSeoContentBlock.tsx"
+          "frontend/index.html"
         ],
         "matchedFiles": [
-          "frontend/src/components/gamepad/TesterSeoContentBlock.tsx"
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-32",
+        "summary": "Update frontend/index.html HTML metadata to match the exact required title and meta description.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-33",
+        "summary": "Remove or update any remaining placeholder guidance/comments in frontend/index.html that instruct replacing IDs, so the file reflects finalized production values and cannot accidentally be reverted to placeholders during future edits.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/index.html"
         ]
       }
     ]
@@ -39,7 +61,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/gamepad/TesterSeoContentBlock.tsx",
+    "frontend/index.html",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

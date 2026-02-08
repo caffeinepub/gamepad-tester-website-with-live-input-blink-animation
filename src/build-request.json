@@ -1,55 +1,105 @@
 {
   "kind": "build_request",
-  "title": "Remove the “Start Gamepad Testing” CTA button from the SEO content block",
-  "priority": "normal",
+  "title": "Fix deployment by replacing placeholder AdSense/Clarity IDs and updating HTML metadata",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-19",
-      "text": "Remove the visible call-to-action button labeled exactly “Start Gamepad Testing” from the marketing/SEO content block component (frontend/src/components/gamepad/TesterSeoContentBlock.tsx), and remove any now-unused imports and functions that only existed to support this button (e.g., the scroll handler).",
+      "id": "REQ-30",
+      "text": "Update frontend/index.html to replace the current placeholder Google AdSense publisher client (\"ca-pub-XXXXXXXXXXXXXXXX\") with the exact provided AdSense script URL/client: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6270014025121224.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-remove-button"
+          "msg-3",
+          "msg-4"
         ],
         "quotes": [
-          "Remove this button"
+          "Deployment failed because your index.html still contains placeholder IDs instead of the exact AdSense and Clarity scripts you provided.",
+          "I given you the script then what"
         ]
       },
       "acceptanceCriteria": [
-        "The “Start Gamepad Testing” button is no longer rendered anywhere in the marketing/SEO content block.",
-        "frontend/src/components/gamepad/TesterSeoContentBlock.tsx no longer imports the shadcn Button component if it is not used after removal.",
-        "Any scroll-to-tester handler/function that is only used by the removed button is deleted and the file compiles without unused-variable/import warnings."
+        "frontend/index.html includes the AdSense script tag with src exactly set to: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6270014025121224",
+        "The placeholder string \"ca-pub-XXXXXXXXXXXXXXXX\" no longer appears anywhere in frontend/index.html",
+        "The script remains async-loaded and does not prevent the SPA from rendering if blocked or failing to load (e.g., onerror handler or equivalent safe failure behavior is present)."
       ]
     },
     {
-      "id": "REQ-20",
-      "text": "Update the “How to Use the Online Gamepad Tester” section text in frontend/src/components/gamepad/TesterSeoContentBlock.tsx to remove the instruction that references clicking the removed “Start Gamepad Testing” button, while keeping all remaining marketing/SEO text intact and in English.",
+      "id": "REQ-31",
+      "text": "Update frontend/index.html to replace the current placeholder Microsoft Clarity project ID (\"CLARITY_PROJECT_ID\") with the exact provided Clarity project ID: nv7n4ru8tf.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-remove-button"
+          "msg-3",
+          "msg-4"
         ],
         "quotes": [
-          "Remove this button"
+          "Deployment failed because your index.html still contains placeholder IDs instead of the exact AdSense and Clarity scripts you provided.",
+          "I given you the script then what"
         ]
       },
       "acceptanceCriteria": [
-        "The ordered list item that says “Click the Start Gamepad Testing button on this page.” is removed or rewritten so it no longer references a non-existent button.",
-        "All other headings/paragraphs/lists in the SEO block remain present and readable in English.",
-        "There are no remaining user-facing references to “Start Gamepad Testing” in the SEO block after this change."
+        "The Clarity snippet in frontend/index.html uses the project ID exactly: nv7n4ru8tf",
+        "The placeholder string \"CLARITY_PROJECT_ID\" no longer appears anywhere in frontend/index.html",
+        "The Clarity snippet loads asynchronously and does not block initial app render."
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "text": "Update frontend/index.html HTML metadata to match the exact required title and meta description.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Specifically, it still has: ... Old title and old description"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The <title> in frontend/index.html is exactly: \"Gamepad Tester Online – Check Controller Buttons, Joysticks & Vibration\"",
+        "frontend/index.html includes a meta name=\"description\" tag with content exactly: \"Free online gamepad tester to check controller buttons, sticks, triggers, vibration and gyroscope. Works with Xbox, PS and USB controllers.\"",
+        "After these changes, no outdated/previous title text remains in frontend/index.html."
+      ]
+    },
+    {
+      "id": "REQ-33",
+      "text": "Remove or update any remaining placeholder guidance/comments in frontend/index.html that instruct replacing IDs, so the file reflects finalized production values and cannot accidentally be reverted to placeholders during future edits.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Deployment failed because your index.html still contains placeholder IDs instead of the exact AdSense and Clarity scripts you provided."
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/index.html does not contain the placeholder-replacement comments that reference \"Replace ca-pub-XXXXXXXXXXXXXXXX\" and/or \"Replace CLARITY_PROJECT_ID\"",
+        "The production AdSense client and Clarity project ID remain present and correct after comment cleanup."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui (shadcn UI components are read-only).",
-    "Keep the backend unchanged (single-actor Motoko canister; no new methods required)."
+    "Do not modify any files under frontend/src/components/ui or any paths listed in frontend.immutablePaths.",
+    "Keep the integration in frontend/index.html so it loads once for the SPA and does not block rendering if third-party scripts are blocked."
   ],
   "nonGoals": [
-    "Do not remove or change any other buttons or controls in the interactive tester panels (e.g., vibration controls, calibration sliders, latency test controls).",
-    "Do not change the tester page anchor element id=\"tester-interactive-area\" in frontend/src/pages/TesterPage.tsx (it may still be used by other navigation behaviors in the future)."
+    "Do not add new ad placements/components (e.g., in-page AdSense units) beyond fixing the script include.",
+    "Do not implement cookie consent or conditional loading flows unless explicitly requested.",
+    "Do not change backend canister code; this fix is limited to frontend/index.html metadata and script IDs."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

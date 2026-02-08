@@ -1,13 +1,19 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 11,
-  "summary": "Expand the gamepad tester website with advanced diagnostics plus improved controller compatibility UX, and add richer on-page marketing/SEO content describing features, how-to steps, supported controllers, and tool benefits.",
+  "projectStateVersion": 19,
+  "summary": "Expand the gamepad tester website with advanced diagnostics plus improved controller compatibility UX, add richer on-page marketing/SEO content, and integrate advertising/analytics scripts (Google AdSense and Microsoft Clarity).",
   "architectural_notes": [
     "Use the browser Gamepad API for polling controller state and updating the UI in real time.",
-    "Controller-specific features (e.g., calibration) may require per-controller detection/heuristics and fallback UI when the browser Gamepad API does not expose needed capabilities."
+    "Controller-specific features (e.g., calibration) may require per-controller detection/heuristics and fallback UI when the browser Gamepad API does not expose needed capabilities.",
+    "Third-party scripts (AdSense/Clarity) should be loaded conditionally and in a performance-conscious way (e.g., after consent where applicable), with a single centralized integration point.",
+    "AdSense integration should use publisher client ca-pub-6270014025121224 in the async script tag.",
+    "Microsoft Clarity integration should use project/tag id nv7n4ru8tf in the Clarity snippet.",
+    "Set site title to: \"Gamepad Tester Online – Check Controller Buttons, Joysticks & Vibration\" and meta description to: \"Free online gamepad tester to check controller buttons, sticks, triggers, vibration and gyroscope. Works with Xbox, PS and USB controllers.\""
   ],
-  "known_issues": [],
-  "isFixRequest": false,
+  "known_issues": [
+    "Deployment/build is failing because frontend/index.html still contains placeholder IDs for AdSense/Clarity (e.g., ca-pub-XXXXXXXXXXXXXXXX, CLARITY_PROJECT_ID) and outdated title/meta description; required exact snippets/IDs must be applied."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-responsive-site-layout-that-includes-1-a-header-displaying-the-website-name-2-a-navbar-with-at-least-tester-and-about-links-sections-and-3-a-footer-that-displays-an-english-copyright-notice-e-g-currentyear-sitename-all-rights-reserved",
@@ -168,6 +174,110 @@
         "REQ-20"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-a-new-features-section-to-the-tester-page-informational-content-using-a-clean-grid-of-feature-items-with-svg-icons-titles-and-short-descriptions-in-english",
+      "title": "Add a new “Features” section to the Tester page informational content using a clean grid of feature items with SVG icons, titles, and short descriptions in English.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-how-to-test-a-gamepad-instruction-section-to-the-tester-page-informational-content-that-presents-step-by-step-instructions-in-english-with-matching-svg-illustrations",
+      "title": "Add a new “How to Test a Gamepad” instruction section to the Tester page informational content that presents step-by-step instructions in English with matching SVG illustrations.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-add-the-svg-assets-required-for-the-new-features-and-how-to-test-a-gamepad-sections-as-static-frontend-assets-and-render-them-from-the-frontend-without-using-the-backend",
+      "title": "Generate and add the SVG assets required for the new “Features” and “How to Test a Gamepad” sections as static frontend assets, and render them from the frontend without using the backend.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-global-site-footer-frontend-src-components-sitelayout-tsx-to-remove-the-existing-caffeine-ai-footer-link-and-replace-it-with-the-user-s-gamepadtester-online-website-link",
+      "title": "Update the global site footer (frontend/src/components/SiteLayout.tsx) to remove the existing caffeine.ai footer link and replace it with the user’s GamepadTester.online website link.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-google-adsense-script-integration-to-the-app-by-inserting-the-adsense-tag-into-the-html-entrypoint-frontend-index-html-the-integration-must-be-implemented-in-a-way-that-loads-once-for-the-spa-and-does-not-break-app-rendering-if-the-script-is-blocked",
+      "title": "Add Google AdSense script integration to the app by inserting the AdSense tag into the HTML entrypoint (frontend/index.html). The integration must be implemented in a way that loads once for the SPA and does not break app rendering if the script is blocked.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-microsoft-clarity-script-integration-to-the-app-by-inserting-the-clarity-tracking-snippet-into-the-html-entrypoint-frontend-index-html-the-integration-must-be-implemented-in-a-way-that-loads-once-for-the-spa-and-does-not-break-app-rendering-if-the-script-is-blocked",
+      "title": "Add Microsoft Clarity script integration to the app by inserting the Clarity tracking snippet into the HTML entrypoint (frontend/index.html). The integration must be implemented in a way that loads once for the SPA and does not break app rendering if the script is blocked.",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-third-party-script-tags-in-frontend-index-html-to-use-the-exact-user-provided-google-adsense-and-microsoft-clarity-snippets-ids-use-this-exact-adsense-script-url-and-client-https-pagead2-googlesyndication-com-pagead-js-adsbygoogle-js-client-ca-pub-6270014025121224-use-this-exact-clarity-project-id-nv7n4ru8tf",
+      "title": "Update the third-party script tags in frontend/index.html to use the exact user-provided Google AdSense and Microsoft Clarity snippets/IDs.\n\nUse this exact AdSense script URL and client:\nhttps://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6270014025121224\n\nUse this exact Clarity project ID:\nnv7n4ru8tf",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-html-document-title-in-frontend-index-html-to-exactly-gamepad-tester-online-check-controller-buttons-joysticks-vibration",
+      "title": "Change the HTML document title in frontend/index.html to exactly: \"Gamepad Tester Online – Check Controller Buttons, Joysticks & Vibration\".",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-set-the-site-meta-description-in-frontend-index-html-to-exactly-free-online-gamepad-tester-to-check-controller-buttons-sticks-triggers-vibration-and-gyroscope-works-with-xbox-ps-and-usb-controllers",
+      "title": "Set the site meta description in frontend/index.html to exactly: \"Free online gamepad tester to check controller buttons, sticks, triggers, vibration and gyroscope. Works with Xbox, PS and USB controllers.\"",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-index-html-to-replace-the-current-placeholder-google-adsense-publisher-client-ca-pub-xxxxxxxxxxxxxxxx-with-the-exact-provided-adsense-script-url-client-https-pagead2-googlesyndication-com-pagead-js-adsbygoogle-js-client-ca-pub-6270014025121224",
+      "title": "Update frontend/index.html to replace the current placeholder Google AdSense publisher client (\"ca-pub-XXXXXXXXXXXXXXXX\") with the exact provided AdSense script URL/client: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6270014025121224.",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-index-html-to-replace-the-current-placeholder-microsoft-clarity-project-id-clarity-project-id-with-the-exact-provided-clarity-project-id-nv7n4ru8tf",
+      "title": "Update frontend/index.html to replace the current placeholder Microsoft Clarity project ID (\"CLARITY_PROJECT_ID\") with the exact provided Clarity project ID: nv7n4ru8tf.",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-index-html-html-metadata-to-match-the-exact-required-title-and-meta-description",
+      "title": "Update frontend/index.html HTML metadata to match the exact required title and meta description.",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-update-any-remaining-placeholder-guidance-comments-in-frontend-index-html-that-instruct-replacing-ids-so-the-file-reflects-finalized-production-values-and-cannot-accidentally-be-reverted-to-placeholders-during-future-edits",
+      "title": "Remove or update any remaining placeholder guidance/comments in frontend/index.html that instruct replacing IDs, so the file reflects finalized production values and cannot accidentally be reverted to placeholders during future edits.",
+      "reqIds": [
+        "REQ-33"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -264,6 +374,42 @@
     {
       "id": "AR-16",
       "summary": "Remove the “Start Gamepad Testing” call-to-action button from the marketing/SEO content block (and remove any related scroll-to-tester behavior/text references if needed)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Add a “Features” section to the page content, using proper SVG graphics/icons for the feature items",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Add a “How to test gamepad” instructions section to the page content, with proper SVG illustrations",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Update the site footer to remove the current footer link(s) and instead use the user’s GamepadTester.online website link (or remove footer links entirely if that’s the intent)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Integrate Google AdSense script/tag(s) into the site to enable ads",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Integrate Microsoft Clarity tracking script into the site for user analytics/session insights",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Update site HTML metadata: set document/page title and meta description to the user-provided text",
       "reqIds": [],
       "status": "pending"
     }

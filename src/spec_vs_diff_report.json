@@ -1,23 +1,29 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-08T08:05:29.571Z",
-  "summary": "TesterSeoContentBlock.tsx no longer shows the “Start Gamepad Testing” CTA button and the how-to text no longer references clicking that button. Some additional non-requested documentation/metadata files were also modified.",
+  "generatedAt": "2026-02-08T08:51:45.536Z",
+  "summary": "frontend/index.html was updated with the provided AdSense client URL, Clarity project ID, and the exact required title/description metadata. Additional unrelated files (frontend-file-summaries.txt and project_state.json) were also modified, which were not requested by the BuildRequest.",
   "missing_requirements": [],
   "hallucinated_features": [
     {
-      "description": "Updated repository metadata/documentation files (frontend-file-summaries.txt and project_state.json) unrelated to removing the CTA button or editing the SEO block copy.",
-      "reason": "BuildRequest only asked for changes within frontend/src/components/gamepad/TesterSeoContentBlock.tsx; these extra file modifications are not mentioned as required.",
+      "description": "Modified project state/summary content unrelated to replacing IDs and updating index.html metadata.",
+      "reason": "BuildRequest explicitly scoped changes to frontend/index.html only (no backend/canister changes; fix limited to frontend/index.html metadata and script IDs). Updating project_state.json is not requested.",
       "evidence": [
-        "frontend-file-summaries.txt",
         "project_state.json"
+      ]
+    },
+    {
+      "description": "Updated/generated frontend file summaries content unrelated to index.html AdSense/Clarity/metadata fixes.",
+      "reason": "BuildRequest does not request changes to documentation/summary files; it is scoped to frontend/index.html.",
+      "evidence": [
+        "frontend-file-summaries.txt"
       ]
     }
   ],
-  "confidence": 0.74,
+  "confidence": 0.78,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/gamepad/TesterSeoContentBlock.tsx",
+    "frontend/index.html",
     "project_state.json"
   ]
 }

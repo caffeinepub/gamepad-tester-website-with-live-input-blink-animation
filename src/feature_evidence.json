@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-remove-the-visible-call-to-action-button-labeled-exactly-start-gamepad-testing-from-the-marketing-seo-content-block-component-frontend-src-components-gamepad-testerseocontentblock-tsx-and-remove-any-now-unused-imports-and-functions-that-only-existed-to-support-this-button-e-g-the-scroll-handler",
-      "featureTitle": "Remove the visible call-to-action button labeled exactly “Start Gamepad Testing” from the marketing/SEO content block component (frontend/src/components/gamepad/TesterSeoContentBlock.tsx), and remove any now-unused imports and functions that only existed to support this button (e.g., the scroll handler).",
+      "featureId": "feature-update-frontend-index-html-to-replace-the-current-placeholder-google-adsense-publisher-client-ca-pub-xxxxxxxxxxxxxxxx-with-the-exact-provided-adsense-script-url-client-https-pagead2-googlesyndication-com-pagead-js-adsbygoogle-js-client-ca-pub-6270014025121224",
+      "featureTitle": "Update frontend/index.html to replace the current placeholder Google AdSense publisher client (\"ca-pub-XXXXXXXXXXXXXXXX\") with the exact provided AdSense script URL/client: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6270014025121224.",
       "files": [
-        "frontend/src/components/gamepad/TesterSeoContentBlock.tsx"
+        "frontend/index.html"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,15 +15,15 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-19"
+        "REQ-30"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-how-to-use-the-online-gamepad-tester-section-text-in-frontend-src-components-gamepad-testerseocontentblock-tsx-to-remove-the-instruction-that-references-clicking-the-removed-start-gamepad-testing-button-while-keeping-all-remaining-marketing-seo-text-intact-and-in-english",
-      "featureTitle": "Update the “How to Use the Online Gamepad Tester” section text in frontend/src/components/gamepad/TesterSeoContentBlock.tsx to remove the instruction that references clicking the removed “Start Gamepad Testing” button, while keeping all remaining marketing/SEO text intact and in English.",
+      "featureId": "feature-update-frontend-index-html-to-replace-the-current-placeholder-microsoft-clarity-project-id-clarity-project-id-with-the-exact-provided-clarity-project-id-nv7n4ru8tf",
+      "featureTitle": "Update frontend/index.html to replace the current placeholder Microsoft Clarity project ID (\"CLARITY_PROJECT_ID\") with the exact provided Clarity project ID: nv7n4ru8tf.",
       "files": [
-        "frontend/src/components/gamepad/TesterSeoContentBlock.tsx"
+        "frontend/index.html"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -33,7 +33,43 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-20"
+        "REQ-31"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-frontend-index-html-html-metadata-to-match-the-exact-required-title-and-meta-description",
+      "featureTitle": "Update frontend/index.html HTML metadata to match the exact required title and meta description.",
+      "files": [
+        "frontend/index.html"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-32"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-or-update-any-remaining-placeholder-guidance-comments-in-frontend-index-html-that-instruct-replacing-ids-so-the-file-reflects-finalized-production-values-and-cannot-accidentally-be-reverted-to-placeholders-during-future-edits",
+      "featureTitle": "Remove or update any remaining placeholder guidance/comments in frontend/index.html that instruct replacing IDs, so the file reflects finalized production values and cannot accidentally be reverted to placeholders during future edits.",
+      "files": [
+        "frontend/index.html"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-33"
       ],
       "confidence": "high"
     }

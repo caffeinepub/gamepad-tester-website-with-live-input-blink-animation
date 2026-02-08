@@ -1,6 +1,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import TesterSeoContentBlock from './TesterSeoContentBlock';
+import TesterFeaturesSection from './TesterFeaturesSection';
+import TesterHowToTestSection from './TesterHowToTestSection';
 
 const FAQ_ITEMS = [
   {
@@ -68,6 +70,12 @@ export default function TesterPostContent() {
     <div className="space-y-8">
       {/* SEO/Marketing Content Block */}
       <TesterSeoContentBlock />
+
+      {/* Features Section */}
+      <TesterFeaturesSection />
+
+      {/* How to Test Section */}
+      <TesterHowToTestSection />
 
       {/* FAQ Section */}
       <Card>
